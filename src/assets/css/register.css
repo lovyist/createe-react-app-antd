@@ -1,0 +1,82 @@
+.header-back{
+    height: .8rem;
+    background-color: #09a3dc;
+    position: relative;
+}
+.go-back{
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+    width: .6rem;
+    height: .6rem;
+    display: inline-block;
+    background: url(../img/go-back.png) no-repeat;
+    background-size: cover;
+}
+.header-back__title{
+    font-size: .36rem;
+    text-align: center;
+    line-height: .8rem;
+    color: #fff;
+}
+.reg-container{
+    min-height: 10.5rem;
+    padding: .5rem .8rem;
+    background-color: #fcfcfc;
+}
+.input-area{
+    height: .8rem;
+    margin-top:.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-area input{
+    height: 100%;
+    width:100%;
+    border:0.01rem solid #dbdbdb;
+    border-radius: .1rem;
+    display: block;
+    font-size: .26rem;
+    padding:.2rem;
+    color: #666;
+}
+.input-area input::-webkit-input-placeholder{
+    color: gray;
+}
+.register-button{
+    width:100%;
+}
+.register-button input{
+    width: 100%;
+    border-radius: .1rem;
+    height: .8rem;
+    background-color: #309fdf;
+    color: #fff;
+    font-size: .28rem;
+    outline: none;
+    border: none;
+}
+.area .tip-input{
+    font-size: .24rem;
+    color: #9d9d9d;
+    line-height: .5rem;
+}
+.input-area input.text-yzm{
+    border-radius: 0rem;
+    border-right: 0rem;
+}
+.text-yzm{
+    width:60%;
+}
+.btn-yzm{
+    width:40%;
+    height: 100%;
+    background-color: #09a3dc;
+    color: #fff;
+    font-size: .24rem;
+}
+button.btn-yzm{
+    outline: none;
+    border:none;
+}
