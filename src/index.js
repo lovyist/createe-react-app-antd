@@ -1,7 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './views/App';
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+import 'babel-polyfill'
+import React from 'react'
+import {render} from 'react-dom'
+import { Provider } from 'react-redux'
+import App from './containers/App'
+import store from './store'
+import './assets/app.css'
+render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+)
