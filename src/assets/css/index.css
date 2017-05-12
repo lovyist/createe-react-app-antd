@@ -164,7 +164,7 @@
     min-height: 10.5rem;
     width:100%;
 }
-.scroll-list ul{
+.scroll-list ul.list-items{
     position: absolute;
     overflow: auto;
     height: 100%;
