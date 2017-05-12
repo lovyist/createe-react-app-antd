@@ -1,35 +1,44 @@
 import {
-  SELECT_GEO,
-  AQI_REQUEST, AQI_SUCCESS, AQI_FAILURE
+  UPDATE_HEADER, UPDATE_FOOTER, UPDATE_TIP, UPDATE_LOADING
 } from '../constants/ActionTypes'
 import CONFIG from '../config'
-
-export const selectGeo = (lng, lat) => ({
-  type: SELECT_GEO,
-  json: {
-    lng: lng,
-    lat: lat
+export const updateHeader = (header) => {
+  return {
+    type: UPDATE_HEADER,
+    header
   }
-})
-
-export const requestAQI = () => ({
-  type: AQI_REQUEST,
-})
-
-
-export const fetchAQI = () => (dispatch, getState) => {
-  dispatch(requestAQI())
-  const geo = getState().geo
-  const lat = geo.lat
-  const lng = geo.lng
-  const token = CONFIG.AQI_TOKEN
-  return fetch(`https://api.waqi.info/feed/geo:${lat};${lng}/?token=${token}`)
-      .then(response => response.json())
-      .then(json => dispatch({
-        type: AQI_SUCCESS,
-        json: json.data
-      }))
-      .catch(json => dispatch({
-        type: AQI_FAILURE,
-      }))
 }
+
+export const updateFooter = (isFootShow = true) => {
+  return {
+    type: UPDATE_FOOTER,
+    isFootShow
+  }
+}
+
+export const updateTip = (tipText) => {
+  return {
+    type: UPDATE_TIP,
+    tipText
+  }
+}
+
+export const showTip = (tipText) => {
+  return dispatch => {
+    dispatch(updateTip(tipText))
+    setTimeout(() => {
+      dispatch(updateTip(''))
+    }, CONFIG.SHOW_TIP_TIME);
+  }
+}
+
+
+export const updateLoading = (isLoading) => {
+  return {
+    type: UPDATE_LOADING,
+    isLoading
+  }
+}
+
+export * from './auth';
+export * from './wechat';

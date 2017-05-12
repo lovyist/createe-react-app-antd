@@ -6,11 +6,11 @@ const DEFAULT_CONFIG = {
   v: 1.3,
   protocol: window.location.protocol || 'https:',
   hostAndPath: 'webapi.amap.com/maps',
-  plugin: [],
+  plugin: ['AMap.Geolocation'],
   callback: 'mapInitCallback',
 };
 const lazyLoadMapApi = (config = DEFAULT_CONFIG) => {
-  const _config = { ...DEFAULT_CONFIG, ...config };
+  const _config = {...DEFAULT_CONFIG, ...config};
   const getScriptSrc = (cfg) => {
     let scriptSrc = `${cfg.protocol}//${cfg.hostAndPath}?v=${cfg.v}&key=${cfg.key}&callback=${cfg.callback}`;
     if (cfg.plugin.length) scriptSrc += `&plugin=${cfg.plugin.join(',')}`;
