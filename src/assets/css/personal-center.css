@@ -207,3 +207,17 @@
     padding:.2rem;
     text-align: center;
 }
+/*设置*/
+.bg-setUp{
+    min-height: 10.5rem;
+    background-color: #fafafa;
+}
+.bg-setUp-item{
+    background-color: #fff;
+    margin-top: .2rem;
+    border-top: .01rem solid #dbdbdb;
+}
+.quit-login{
+    text-align: center;
+    padding:.5rem;
+}
