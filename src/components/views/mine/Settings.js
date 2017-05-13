@@ -5,8 +5,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Cell, CellBody, Cells} from 'react-weui'
-import * as Actions from '../../../../actions'
-import {backHeader} from '../../../../utils/Header'
+import * as Actions from '../../../actions/index'
+import {backHeader} from '../../../utils/Header'
 const mapStateToProps = (state) => {
   return {
     header: state.header

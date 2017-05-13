@@ -10,8 +10,8 @@ import Login from './components/views/user/login'
 import Register from './components/views/user/register'
 import Forget from './components/views/user/forget'
 import NotFound from './components/commons/404'
-import Mine from './components/views/user/mine'
-import Settings from './components/views/user/mine/Settings'
+import Mine from './components/views/mine'
+import Settings from './components/views/mine/Settings'
 import Map from './components/Map'
 export default (
   <Route path="/" component={App}>

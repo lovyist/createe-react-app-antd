@@ -6,17 +6,8 @@ import {reduxForm, Field} from 'redux-form'
 import {connect} from 'react-redux';
 import classNames from 'classnames';
 import userUtils from '../../../../utils/userUtils';
-const validate = values => {
-  const errors = {}
-  if (!values.username) {
-    errors.username = 'Required'
-  }
-  if (!values.password) {
-    errors.password = 'Required'
-  }
-  console.log(errors)
-  return errors
-}
+import { required } from '../../../../utils/validateRules'
+
 
 const renderField = prs => (
 
@@ -32,8 +23,8 @@ let LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="account-info">
-        <Field name="username" type="text" placeholder="手机号码/账号" component={renderField}/>
-        <Field name="password" type="password" placeholder="账户密码" component={renderField}/>
+        <Field name="username" type="text" placeholder="手机号码/账号" component={renderField} validate={[required('手机号码/账号')]}/>
+        <Field name="password" type="password" placeholder="账户密码" component={renderField} validate={[required('账户密码')]}/>
       </div>
       <div className="login-button">
         <input disabled={ invalid || submitting } type="submit" value="登录"/>
@@ -45,7 +36,6 @@ let LoginForm = (props) => {
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
 LoginForm = reduxForm({
   form: 'login',
-  validate,
 })(LoginForm)
 
 // You have to connect() to any reducers that you wish to connect to yourself

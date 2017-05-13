@@ -5,7 +5,33 @@ import uaParser from 'ua-parser-js' // 客户端浏览器信息解析模块
 import jwtDecode from 'jwt-decode'
 import constants from '../config'
 import moment from 'moment'
+import cookie from 'react-cookie'
+import CONFIG from '../config'
 
+let cookieConfig = {}
+if (CONFIG.COOKIE_DOMAIN !== '') {
+  cookieConfig = {domain: CONFIG.COOKIE_DOMAIN}
+}
+
+export function getCookie(name) {
+  return cookie.load(name)
+}
+
+export function setCookie(name, value) {
+  cookie.save(name, value, cookieConfig)
+}
+
+export function signOut() {
+  cookie.remove(CONFIG.API_TOKEN, cookieConfig)
+}
+/**
+ * 是否登录
+ * token 存在
+ * @returns {boolean} 已经登录返回true，否则返回false
+ */
+export function isLogin() {
+  return !!cookie.load(CONFIG.API_TOKEN)
+}
 /**
  * 是否微信端
  * @returns {boolean}
@@ -16,17 +42,7 @@ const isWeChat = function () {
   return browserName === 'WeChat'
 }
 
-/**
- * 是否登录
- * token 存在，token的长度为198位，并且有效期 > 0秒
- * @param state
- * @returns {boolean} 已经登录返回true，否则返回false
- */
-const isLogin = function () {
-  let apiToken = localStorage.getItem(constants.API_TOKEN)
-  //let userInfo = localStorage.getItem(constants.USER_INFO)
-  return apiToken && apiToken.length === 198 && checkTokenExpDiff(apiToken) > 0
-}
+
 
 /**
  * 格式化日期

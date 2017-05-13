@@ -4,7 +4,7 @@
 import axios from 'axios'
 import CONFIG from '../config'
 axios.defaults.baseURL = '/'
-axios.defaults.withCredentials = false
+axios.defaults.withCredentials = true
 //axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 

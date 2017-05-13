@@ -23,10 +23,8 @@ export const login = (user) => {
         if (res.errNo !== 0) {
           return dispatch(warnTip(res.errMsg))
         }
-        userUtils.storageUserInfo(res, user.username)
         dispatch(successTip('登录成功'))
         dispatch(push('/'))
-        return dispatch(loginSuccess(res.token))
       })
       .catch(err => {
         console.log(err)
@@ -80,7 +78,21 @@ export const register = (user) => {
       })
   }
 }
-
+export const resetPwd = (user) => {
+  return (dispatch) => {
+    userAPI.resetPwd(user)
+      .then(res => res.data)
+      .then(res => {
+        if (res.errNo !== 0) {
+          return dispatch(warnTip(res.errMsg))
+        }
+        dispatch(push('/login'))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
 export const logout = () => {
   return (dispatch) => {
 

@@ -26,13 +26,6 @@ class Index extends React.Component {
     }
     actions.updateHeader(Object.assign({}, initHeader, header))
     actions.updateFooter()
-    actions.initShare(
-      {
-        title: '首页',     // 分享标题
-        link: 'http://852ccfba.ngrok.io',      // 分享链接
-        imgUrl: 'http://app.linkup.net.cn/images/logo.597892d.png'
-      }
-    )
   }
 
   render() {

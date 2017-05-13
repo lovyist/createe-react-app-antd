@@ -10,7 +10,9 @@ const login = (user) => {
 const register = (user) => {
   return axios.post('/user/pass/register',  qs.stringify(user))
 }
-
+const resetPwd = (user) => {
+  return axios.post('/user/pass/resetPwd',  qs.stringify(user))
+}
 const sendSmsVerifyCode = (phoneNum, codeType) => {
   return axios.post('/user/pass/sendPhoneCode', qs.stringify({phoneNum,codeType}))
 }
@@ -28,6 +30,7 @@ const getWeChatConfig = (url) => {
 export default {
   login,
   register,
+  resetPwd,
   logout,
   sendSmsVerifyCode,
   getWeChatConfig,

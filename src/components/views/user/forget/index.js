@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux'
 import * as Actions from '../../../../actions'
 import {backHeader} from '../../../../utils/Header'
 import ForgetForm from './ForgetForm'
+import CONFIG from '../../../../config'
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
@@ -37,20 +38,20 @@ class Forget extends Component {
 
   submitForm(values) {
     const {actions} = this.props
-    actions.register(values)
+    actions.resetPwd(values)
   }
 
   handleSendSmsVerifyCode() {
     const {form, actions} = this.props
-    if (form.forget && form.forget.values && form.forget.values.username) {
-      actions.sendSmsVerifyCode(form.forget.values.username, 2)
+    if (form.forget && form.forget.values && form.forget.values.phoneNum) {
+      actions.sendSmsVerifyCode(form.forget.values.phoneNum, CONFIG.SMS_CODE_TYPE.resetPwd)
     }
   }
 
   render() {
     const {auth} = this.props
     return (
-      <div className="jx-top-con">
+      <div className="reg-container">
         <ForgetForm onSubmit={this.submitForm} sendSmsVerifyCode={this.handleSendSmsVerifyCode}
                     verifyCodeCountDown={auth.verifyCodeCountDown}/>
       </div>

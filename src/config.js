@@ -12,7 +12,8 @@ const CONFIG = {
   },
   SMS_VERIFY_CODE_COUNT_DOWN: 60,         // 短信验证码倒计时（单位：秒）
   SHOW_TIP_TIME: 2000,         // 显示提示倒计时（单位：毫秒）
-  API_TOKEN: 'API_TOKEN',
+  API_TOKEN: 'dd_token',
+  COOKIE_DOMAIN:'',
   USER_INFO: 'USER_INFO',
   CACHE_LAST_USE_LOGIN_PHONE: 'CACHE_LAST_USE_LOGIN_PHONE'
 }
