@@ -31,5 +31,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
-  }
+  },
+  "proxy":"120.27.93.206:8800"
 }
