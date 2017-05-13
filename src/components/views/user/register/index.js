@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as Actions from '../../../../actions'
 import initHeader from '../../../../utils/Header'
+import CONFIG from '../../../../config'
 import RegisterForm from './RegisterForm'
 const mapStateToProps = (state) => {
   return {
@@ -32,6 +33,7 @@ class Register extends React.Component {
     const {actions} = this.props
     let header = {
       title: '注册',
+      isShowBack:true,
       isMore: true,
       moreItem: <Link to={'/login'}>登录</Link>,
     }
@@ -47,19 +49,17 @@ class Register extends React.Component {
   handleSendSmsVerifyCode() {
     const {form, actions} = this.props
     console.log(form.register)
-    if (form.register && form.register.values && form.register.values.username) {
-      actions.sendSmsVerifyCode(form.register.values.username, 1)
+    if (form.register && form.register.values && form.register.values.phoneNum) {
+      actions.sendSmsVerifyCode(form.register.values.phoneNum, CONFIG.SMS_CODE_TYPE.register)
     }
   }
 
   render() {
     const {auth} = this.props
     return (
-      <div className="jx-top-con">
-        <img src="http://app.linkup.net.cn/images/logo.597892d.png" className="jx-mark" alt="logo"/>
+      <div className="reg-container">
         <RegisterForm onSubmit={this.submitForm} sendSmsVerifyCode={this.handleSendSmsVerifyCode}
                       verifyCodeCountDown={auth.verifyCodeCountDown}/>
-        <Link to="/forget" className="jx-forget">点击确认即同意《用户协议》</Link>
       </div>
     )
   }

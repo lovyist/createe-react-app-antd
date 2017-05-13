@@ -5,8 +5,6 @@ import React from 'react'
 import {reduxForm, Field} from 'redux-form'
 import {connect} from 'react-redux';
 import classNames from 'classnames';
-import WeUI from 'react-weui'
-const {ButtonArea, CellBody, Form, FormCell, Input} = WeUI
 import userUtils from '../../../../utils/userUtils';
 const validate = values => {
   const errors = {}
@@ -21,11 +19,11 @@ const validate = values => {
 }
 
 const renderField = prs => (
-  <FormCell>
-    <CellBody>
-      <Input type={prs.type} placeholder={prs.placeholder} {...prs.input} />
-    </CellBody>
-  </FormCell>
+
+  <div className={classNames({'account-num':prs.type==='text','account-paw':prs.type==='password'})}>
+    <i className={classNames({'ico-account-num':prs.type==='text','ico-account-paw':prs.type==='password'})}/>
+    <input type={prs.type} placeholder={prs.placeholder} {...prs.input} />
+  </div>
 )
 
 let LoginForm = (props) => {
@@ -33,18 +31,13 @@ let LoginForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Form className="jx-ipt-wrap" noValidate>
-        <Field name="username" type="tel" placeholder="输入手机号" component={renderField}/>
-        <Field name="password" type="password" placeholder="输入密码(6位以上)" component={renderField}/>
-      </Form>
-      <ButtonArea>
-        <button className={classNames('weui-btn', {
-          'weui-btn_primary': !invalid,
-          'weui-btn_default weui-btn_disabled': invalid || submitting
-        })} disabled={ invalid || submitting } type="submit">
-          登录
-        </button>
-      </ButtonArea>
+      <div className="account-info">
+        <Field name="username" type="text" placeholder="手机号码/账号" component={renderField}/>
+        <Field name="password" type="password" placeholder="账户密码" component={renderField}/>
+      </div>
+      <div className="login-button">
+        <input disabled={ invalid || submitting } type="submit" value="登录"/>
+      </div>
     </form>
   )
 }

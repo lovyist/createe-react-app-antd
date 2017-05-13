@@ -5,8 +5,8 @@ import axios from 'axios'
 import CONFIG from '../config'
 axios.defaults.baseURL = '/'
 axios.defaults.withCredentials = false
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+//axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 axios.interceptors.request.use(function (config) {
   config.headers = config.headers || {}

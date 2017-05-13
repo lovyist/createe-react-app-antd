@@ -8,7 +8,8 @@ import {bindActionCreators} from 'redux'
 import * as Actions from '../../../../actions'
 import initHeader from '../../../../utils/Header'
 import LoginForm from './LoginForm'
-
+import login_bg from '../../../../assets/img/login-bg.png'
+import user_pic from '../../../../assets/img/user-pic.png'
 const mapStateToProps = (state) => {
   return {
     header: state.header
@@ -30,6 +31,7 @@ export default class Login extends React.Component {
   componentDidMount() {
     const {actions} = this.props
     let header = {
+      isShow:false,
       title: '登录',
       isMore: true,
       moreItem: <Link to={'/register'}>注册</Link>,
@@ -46,10 +48,18 @@ export default class Login extends React.Component {
   render() {
 
     return (
-      <div className="jx-top-con">
-        <img src="http://app.linkup.net.cn/images/logo.597892d.png" className="jx-mark" alt="logo"/>
-        <LoginForm onSubmit={this.submitForm}/>
-        <Link to="/forget" className="jx-forget">忘记密码</Link>
+      <div className="content-wrap">
+        <div className="cover"><img src={login_bg} alt=""/></div>
+        <div className="container">
+          <div className="pic-user">
+            <div className="pic-area"><img src={user_pic} alt=""/></div>
+          </div>
+          <LoginForm onSubmit={this.submitForm}/>
+          <div className="register-acc">
+            <Link to="/forget"><span className="forget-pwd">忘记密码？</span></Link>
+            <Link to="/register"><span className="reg-account">注册账号？</span></Link>
+          </div>
+        </div>
       </div>
     )
   }

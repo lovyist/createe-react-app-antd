@@ -21,8 +21,8 @@ export const header = (state = initHeader, action) => {
 }
 
 export const footer = (state = {
-                         isFootShow: true
-                       }, action) => {
+  isFootShow: true
+}, action) => {
   switch (action.type) {
     case UPDATE_FOOTER:
       return {
@@ -35,21 +35,23 @@ export const footer = (state = {
 }
 
 export const msg = (state = {
-                      isTip: false,
-                      isLoading: false,
-                      tipText: '',
-                    }, action) => {
+  show: false,
+  type: 'loading',
+  text: '',
+}, action) => {
   switch (action.type) {
     case UPDATE_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading
+        show: action.isLoading,
+        type: 'loading'
       }
     case UPDATE_TIP:
       return {
         ...state,
-        isTip: !!action.tipText,
-        tipText: action.tipText
+        show: !!action.text,
+        text: action.text,
+        type: action.msg_type
       }
     default:
       return state

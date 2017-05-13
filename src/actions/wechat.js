@@ -1,4 +1,3 @@
-import wx from 'weixin-js-sdk'
 import * as types from '../constants/ActionTypes'
 import userUtils from '../utils/userUtils'
 import userAPI from '../api/user'
@@ -17,7 +16,7 @@ const getWechatInitConfig = function () {
 /**
  * 初始化微信SDK
  */
-export const initWeChat = () => {
+/*export const initWeChat = () => {
   return dispatch => {
     if (!userUtils.isWeChat()) {
       return
@@ -49,7 +48,7 @@ export const initWeChat = () => {
       })
     })
   }
-}
+}*/
 
 /**
  * 初始化分享接口
@@ -60,7 +59,7 @@ export const initWeChat = () => {
  *  imgUrl: xxx     // 分享图片
  * }
  */
-export const initShare = (opts) => {
+/*export const initShare = (opts) => {
   return dispatch => {
     if (!userUtils.isWeChat()) {
       return
@@ -138,6 +137,6 @@ export const initShare = (opts) => {
     })
   }
 
-}
+}*/
 
 

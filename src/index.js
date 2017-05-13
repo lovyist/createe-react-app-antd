@@ -12,7 +12,11 @@ import routes from './routes'
 import 'weui';
 import 'react-weui/lib/react-weui.min.css';
 //local css
-import './assets/app.css'
+import './assets/css/reset.css'
+import './assets/css/index.css'
+import './assets/css/login.css'
+import './assets/css/register.css'
+
 
 const history = syncHistoryWithStore(browserHistory, store)
 window.addEventListener('load', () => {

@@ -6,7 +6,7 @@ import userAPI from '../api/user'
 import * as types from '../constants/ActionTypes'
 import userUtils from '../utils/userUtils'
 import CONFIG from '../config'
-import {showTip} from './index'
+import {successTip, warnTip} from './index'
 const loginSuccess = (token) => {
   return {
     type: types.UPDATE_USER_INFO,
@@ -20,8 +20,11 @@ export const login = (user) => {
     userAPI.login(user)
       .then(res => res.data)
       .then(res => {
+        if (res.errNo !== 0) {
+          return dispatch(warnTip(res.errMsg))
+        }
         userUtils.storageUserInfo(res, user.username)
-        dispatch(showTip('登录成功'))
+        dispatch(successTip('登录成功'))
         dispatch(push('/'))
         return dispatch(loginSuccess(res.token))
       })
@@ -39,17 +42,19 @@ export const login = (user) => {
 export const sendSmsVerifyCode = function (username, type) {
   return dispatch => {
     userAPI.sendSmsVerifyCode(username, type)
+      .then(res => res.data)
       .then(resp => {
-          if (resp.status === 200) {
-            //dispatch(types.UPDATE_TIP, '验证码发送成功')
-            let countDown = CONFIG.SMS_VERIFY_CODE_COUNT_DOWN
-            let t = window.setInterval(() => {
-              if (countDown === 0) {
-                window.clearInterval(t)
-              }
-              dispatch({type: types.UPDATE_VERIFY_CODE_COUNT_DOWN, countDown: countDown--})
-            }, 1000)
+          if (resp.errNo !== 0) {
+            return dispatch(warnTip(resp.errMsg))
           }
+          dispatch(successTip('验证码已发送'))
+          let countDown = CONFIG.SMS_VERIFY_CODE_COUNT_DOWN
+          let t = window.setInterval(() => {
+            if (countDown === 0) {
+              window.clearInterval(t)
+            }
+            dispatch({type: types.UPDATE_VERIFY_CODE_COUNT_DOWN, countDown: countDown--})
+          }, 1000)
         }
       )
       .catch(err => {
@@ -64,6 +69,9 @@ export const register = (user) => {
     userAPI.register(user)
       .then(res => res.data)
       .then(res => {
+        if (res.errNo !== 0) {
+          return dispatch(warnTip(res.errMsg))
+        }
         userUtils.storageLastUsePhone(user.username)
         dispatch(push('/login'))
       })
@@ -82,7 +90,7 @@ export const logout = () => {
         let lastUsePhone = userUtils.getLastUsePhone()
         localStorage.clear()
         userUtils.storageLastUsePhone(lastUsePhone)
-        dispatch(showTip('退出成功'))
+        dispatch(successTip('退出成功'))
         dispatch(push('/login'))
       })
   }

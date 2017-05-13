@@ -1,11 +1,12 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import classNames from 'classnames'
 import * as Actions from '../actions'
 import Header from '../components/commons/header'
 import Footer from '../components/commons/footer'
-import Toast from '../components/commons/toast'
+import Tip from '../components/commons/tip'
 const mapStateToProps = (state) => {
   return {
     header: state.header,
@@ -36,14 +37,14 @@ class App extends Component {
     // 初始化用户信息
     actions.updateUser()
     // 初始化微信配置
-    actions.initWeChat()
+    //actions.initWeChat()
   }
 
   render() {
     const {header, footer, msg, children, location,} = this.props
     return (
       <div>
-        <Toast msg={msg}/>
+        <Tip msg={msg}/>
         {
           header.isShow &&
           <Header

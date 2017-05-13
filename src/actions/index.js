@@ -16,19 +16,31 @@ export const updateFooter = (isFootShow = true) => {
   }
 }
 
-export const updateTip = (tipText) => {
+export const updateTip = (type,text) => {
   return {
     type: UPDATE_TIP,
-    tipText
+    msg_type:type,
+    text
   }
 }
 
-export const showTip = (tipText) => {
+export const showTip = (type,tipText) => {
   return dispatch => {
-    dispatch(updateTip(tipText))
+    dispatch(updateTip(type,tipText))
     setTimeout(() => {
-      dispatch(updateTip(''))
+      dispatch(updateTip(type,''))
     }, CONFIG.SHOW_TIP_TIME);
+  }
+}
+
+export const successTip = (text) =>{
+  return dispatch => {
+    dispatch(showTip('success',text))
+  }
+}
+export const warnTip = (text) =>{
+  return dispatch => {
+    dispatch(showTip('warn',text))
   }
 }
 
