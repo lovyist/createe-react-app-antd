@@ -2,6 +2,7 @@
  * Created by Freeman on 2017/3/28.
  */
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Cell, CellBody, Cells} from 'react-weui'
@@ -55,7 +56,7 @@ class Settings extends Component {
   }
 }
 Settings.propTypes = {
-  header: React.PropTypes.object,
-  actions: React.PropTypes.object,
+  header: PropTypes.object,
+  actions: PropTypes.object,
 }
 export default Settings

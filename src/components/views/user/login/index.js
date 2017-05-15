@@ -2,6 +2,7 @@
  * Created by freeman on 17-3-25.
  */
 import React from 'react'
+import PropTypes from 'prop-types';
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -66,8 +67,8 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
-  header: React.PropTypes.object,
-  actions: React.PropTypes.object,
+  header: PropTypes.object,
+  actions: PropTypes.object,
 }
 
 

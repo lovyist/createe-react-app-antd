@@ -1,7 +1,8 @@
 /**
  * Created by lovyist on 2017/3/29.
  */
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { browserHistory, Link } from 'react-router';
 const Header = ({title, hasGoBack}) => (
     <div className="nav-top-p">

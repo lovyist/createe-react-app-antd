@@ -2,6 +2,7 @@
  * Created by freeman on 17-3-25.
  */
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as Actions from '../../../actions'
@@ -38,8 +39,8 @@ class Index extends React.Component {
 }
 
 Index.propTypes = {
-  header: React.PropTypes.object,
-  actions: React.PropTypes.object,
+  header: PropTypes.object,
+  actions: PropTypes.object,
 }
 
 export default Index

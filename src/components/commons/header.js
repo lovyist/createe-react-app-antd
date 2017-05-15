@@ -1,7 +1,8 @@
 /**
  * Created by freeman on 17-3-26.
  */
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {browserHistory} from 'react-router';
 import classNames from 'classnames';
 class Header extends React.Component {

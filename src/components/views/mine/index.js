@@ -2,6 +2,7 @@
  * Created by Freeman on 2017/3/28.
  */
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Link} from 'react-router'
@@ -102,8 +103,8 @@ class Mine extends Component {
   }
 }
 Mine.propTypes = {
-  auth: React.PropTypes.object,
-  header: React.PropTypes.object,
-  actions: React.PropTypes.object,
+  auth: PropTypes.object,
+  header: PropTypes.object,
+  actions: PropTypes.object,
 }
 export default Mine

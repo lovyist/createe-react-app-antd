@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as Actions from '../../../../actions'
@@ -60,9 +61,9 @@ class Forget extends Component {
 }
 
 Forget.propTypes = {
-  auth: React.PropTypes.object,
-  form: React.PropTypes.object,
-  actions: React.PropTypes.object,
+  auth: PropTypes.object,
+  form: PropTypes.object,
+  actions: PropTypes.object,
 }
 
 export default Forget
