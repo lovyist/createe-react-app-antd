@@ -17,6 +17,7 @@ import './assets/css/index.css'
 import './assets/css/login.css'
 import './assets/css/register.css'
 import './assets/css/personal-center.css'
+import './assets/css/publish.css'
 
 
 const history = syncHistoryWithStore(browserHistory, store)
