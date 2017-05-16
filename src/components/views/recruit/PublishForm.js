@@ -1,23 +1,16 @@
 /**
  * Created by Freeman on 2017/5/16.
  */
-import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React, {Component} from "react";
+import {Field, reduxForm} from "redux-form";
 import {
   ButtonArea,
-  Button,
-  CellHeader,
   CellBody,
-  Form,
+  CellHeader,
   FormCell,
-  Input,
   Label,
-  TextArea,
-  Select,
-  CityPicker,
-  Uploader,
-} from 'react-weui'
-import { renderInputField,renderTextAreaField,renderCity ,renderUpload} from '../../commons/render'
+} from "react-weui";
+import {renderCity, renderInputField, renderTextAreaField, renderUpload} from "../../commons/render";
 @reduxForm({
   form: 'publishRecruit'
 })

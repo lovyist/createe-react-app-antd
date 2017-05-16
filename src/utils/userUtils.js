@@ -103,12 +103,6 @@ const storageUserInfo = function (data, phone) {
   storageLastUsePhone(phone)
 }
 
-function checkTokenExpDiff(token) {
-  let tokenPayload = getInfoFromToken(token)
-  let expiry = moment.unix(tokenPayload.exp)
-  return expiry.diff(moment(), 'seconds')
-}
-
 /**
  * 校验手机号
  * @param phone

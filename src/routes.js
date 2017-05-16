@@ -13,7 +13,9 @@ import NotFound from './components/commons/404'
 import Mine from './components/views/mine'
 import Settings from './components/views/mine/Settings'
 import Publish from './components/views/publish'
+import RecruitList from './components/views/recruit/List'
 import RecruitPublish from './components/views/recruit/publish'
+import RecruitDetail from './components/views/recruit/Detail'
 import Map from './components/Map'
 export default (
   <Route path="/" component={App}>
@@ -24,7 +26,9 @@ export default (
     <Route path="publish" component={Publish} onEnter={userUtils.redirectToLogin}/>
     <Route path="mine" component={Mine} onEnter={userUtils.redirectToLogin}/>
     <Route path="mine/settings" component={Settings}/>
+    <Route path="recruit" component={RecruitList}/>
     <Route path="recruit/publish" component={RecruitPublish}/>
+    <Route path="recruit/:id" component={RecruitDetail}/>
     <Route path="map" component={Map}/>
     <Route path="*" component={NotFound}/>
   </Route>

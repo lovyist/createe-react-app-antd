@@ -7,23 +7,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../../../actions'
 import initHeader from '../../../utils/Header'
-import {
-  ButtonArea,
-  Button,
-  CellHeader,
-  CellBody,
-  Form,
-  FormCell,
-  Input,
-  Label,
-  TextArea,
-  Select,
-  CityPicker,
-  Uploader,
-} from 'react-weui'
-import {renderInputField} from '../../commons/render'
-import {Field} from 'redux-form'
-import cnCity from '../../../constants/cnCity'
 import PublishForm from './PublishForm'
 const mapStateToProps = (state) => {
   return {
@@ -77,21 +60,25 @@ class Publish extends Component {
   submit = (values) => {
     // Do something with the form values
     console.log(values);
+    let formData  = new FormData();
+
+    for(let name in values) {
+      formData.append(name, values[name]);
+    }
+    fetch('/recruit/index/publish',{
+      method: "POST",
+      body: formData,
+      credentials: "include"
+    }).then(res =>res.json())
+      .then(res =>{
+        console.log(res)
+      })
   }
 
   render () {
-    const that = this
     return (
       <div className="content-wrap">
         <PublishForm onSubmit={this.submit} catList={this.state.catList}/>
-        <Form method="POST" action="http://127.0.0.1:8800/recruit/index/Publish" acceptCharset="UTF-8"
-              encType="multipart/form-data">
-
-
-
-
-        </Form>
-
       </div>
     )
   }

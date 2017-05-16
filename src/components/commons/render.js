@@ -13,6 +13,9 @@ import {
   Icon,
   CityPicker,
   Uploader,
+  Form,
+  Gallery,
+  GalleryDelete,
 } from 'react-weui'
 import cnCity from '../../constants/cnCity'
 export const renderInputField = ({input, label, type, placeholder, meta: {touched, error}}) => (
@@ -66,7 +69,6 @@ export class renderCity extends Component{
   }
 
   render() {
-    const { input: { value, onChange } } = this.props
     return (
       <FormCell>
         <CellHeader>
@@ -99,9 +101,10 @@ export class renderUpload extends Component{
 
   constructor (props) {
     super(props)
-
+    this.renderGallery = this.renderGallery.bind(this)
     this.state = {
       demoFiles:[],
+      gallery:false,
     }
   }
 
@@ -114,12 +117,34 @@ export class renderUpload extends Component{
       demoFiles: newFiles
     });
 
-    onChange(file.data)
+    onChange(file.nativeFile)
+  }
+
+  renderGallery(){
+    if(!this.state.gallery) return false;
+
+    return (
+      <Gallery src={this.state.gallery.url} show onClick={ e=> {
+        //avoid click background item
+        e.preventDefault()
+        e.stopPropagation();
+        this.setState({gallery: false})
+      }}>
+        <GalleryDelete onClick={ e=> {
+          this.setState({
+            demoFiles: this.state.demoFiles.filter((e,i)=>i!=this.state.gallery.id),
+            gallery: false
+          })
+        }} />
+      </Gallery>
+    )
   }
 
   render() {
     const that = this
     return (
+    <Form>
+      { this.renderGallery() }
       <FormCell>
         <CellBody>
           <Uploader
@@ -146,6 +171,8 @@ export class renderUpload extends Component{
           />
         </CellBody>
       </FormCell>
+    </Form>
+
     )
   }
 }
