@@ -74,7 +74,7 @@ class Publish extends Component {
       .then(res =>{
         console.log(res)
         if (res.errNo === 0){
-          browserHistory.push(`/edu/detail/${res.data.infoId}`)
+          browserHistory.push(`/recruit/detail/${res.data.infoId}`)
         }else {
           alert(res.errMsg)
         }
