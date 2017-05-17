@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../../../actions'
 import initHeader from '../../../utils/Header'
-import Carousel from './Carousel'
+import Carousel from '../../commons/Carousel'
 
 import recruit from '../../../assets/img/01.png'
 import tour from '../../../assets/img/02.png'
@@ -15,6 +15,8 @@ import education from '../../../assets/img/03.png'
 import { Link } from 'react-router'
 import { InfiniteLoader } from 'react-weui'
 import { formatDate } from '../../../utils/dateUtils'
+import Footer from "../../commons/footer";
+import Header from "../../Header/index";
 
 const mapStateToProps = (state) => {
   return {
@@ -98,21 +100,14 @@ class Index extends React.Component {
     return (
       <div className="content-wrap">
         <InfiniteLoader height="90vh" onLoadMore={this.fetchMoreRecList}>
-          <div className="header">
-            <div className="search-box">
-              <div className="search-content">
-                <span className="search-icon"/>
-                <div className="search-input"/>
-              </div>
-            </div>
-          </div>
+          <Header title={ '首页'} hasGoBack={false}/>
           {
             this.state.carouselData.length > 0 && <Carousel data={this.state.carouselData}/>
           }
           <div className="fast-entry">
-            <div className="entry-recruit"><a href=""><img src={recruit} alt=""/></a></div>
-            <div className="entry-tour"><a href=""><img src={tour} alt=""/></a></div>
-            <div className="entry-education"><a href=""><img src={education} alt=""/></a></div>
+            <div className="entry-recruit"><Link to="/cat/recruit"><img src={recruit} alt=""/></Link></div>
+            <div className="entry-tour"><Link to="/cat/travel"><img src={tour} alt=""/></Link></div>
+            <div className="entry-education"><Link to="/cat/edu"><img src={education} alt=""/></Link></div>
           </div>
 
           <div className="guess-like">
@@ -141,6 +136,7 @@ class Index extends React.Component {
             </div>
           </div>
         </InfiniteLoader>
+        <Footer  />
       </div>
     )
   }

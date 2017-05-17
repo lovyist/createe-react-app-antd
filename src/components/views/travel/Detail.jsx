@@ -3,24 +3,9 @@
  */
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as Actions from '../../../actions'
-import initHeader from '../../../utils/Header'
 import {formatDate} from "../../../utils/dateUtils";
 import Header from "../../Header/index";
-const mapStateToProps = (state) => {
-  return {
-    header: state.header
-  }
-}
-const mapDispatchToProps = dispatch => (
-  {
-    actions: bindActionCreators(Actions, dispatch)
-  }
-)
-@connect(mapStateToProps, mapDispatchToProps)
+
 export default class Detail extends Component {
   constructor(props) {
     super(props)
@@ -31,12 +16,7 @@ export default class Detail extends Component {
   }
 
   componentDidMount() {
-    const {actions} = this.props
-    let header = {
-      isShow: false,
-    }
-    actions.updateHeader(Object.assign({}, initHeader, header))
-    actions.updateFooter()
+
     this.fetchDetail()
 
   }
@@ -44,7 +24,7 @@ export default class Detail extends Component {
   fetchDetail() {
     const {params: {id}} = this.props
     const that = this
-    fetch(`/recruit/index/getRecruitInfo?infoId=${id}`, {
+    fetch(`/travel/index/getTravelInfo?infoId=${id}`, {
       method: "get",
       credentials: "include"
     })
@@ -59,7 +39,7 @@ export default class Detail extends Component {
   render() {
     return (
       <div className="content-wrap">
-        <Header title={'招聘详情'}/>
+        <Header title={'旅游详情'}/>
         <div className="main-content scroll-list">
           <div className="main-box">
             <div className="xq-pic"><img src={`/${this.state.detail.image}`} alt=""/></div>
@@ -74,41 +54,37 @@ export default class Detail extends Component {
             <div className="row-line"></div>
             <div className="details-info">
               <div className="details-info__item">
-                <span className="info-name">薪水：</span>
-                <span className="info-content">{this.state.detail.salary}元</span>
+                <span className="info-name">价格：</span>
+                <span className="info-content">{this.state.detail.price}元</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">薪资类型：</span>
-                <span className="info-content">{this.state.detail.salaryType}</span>
+                <span className="info-name">宾馆类型：</span>
+                <span className="info-content">{this.state.detail.hotelType}</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">招聘人数：</span>
-                <span className="info-content">{this.state.detail.number}名</span>
-              </div>
-              <div className="details-info__item">
-                <span className="info-name">开始日期：</span>
+                <span className="info-name">出发日期：</span>
                 <span className="info-content">{this.state.detail.startDate}</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">结束日期：</span>
+                <span className="info-name">返回日期：</span>
                 <span className="info-content">{this.state.detail.endDate}</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">开始时间：</span>
-                <span className="info-content">{this.state.detail.startTime}</span>
+                <span className="info-name">出发地：</span>
+                <span className="info-content">{this.state.detail.startPlace}</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">结束时间：</span>
-                <span className="info-content">{this.state.detail.endTime}</span>
+                <span className="info-name">目的地：</span>
+                <span className="info-content">{this.state.detail.endPlace}</span>
               </div>
               <div className="details-info__item">
-                <span className="info-name">创建时间：</span>
-                <span className="info-content">{formatDate(this.state.detail.createdTime)}</span>
+                <span className="info-name">交通：&nbsp;往：</span>
+                <span className="info-content">{this.state.detail.goVehicle}</span>
               </div>
-              {/*<div className="details-info__item">
-                <span className="info-name">更新时间：</span>
-                <span className="info-content">{this.state.detail.number}</span>
-              </div>*/}
+              <div className="details-info__item">
+                <span className="info-name">交通：&nbsp;返：</span>
+                <span className="info-content">{this.state.detail.backVehicle}</span>
+              </div>
               <div className="details-info__item">
                 <span className="info-name">联系人：</span>
                 <span className="info-content">{this.state.detail.contact}</span>
@@ -204,7 +180,4 @@ export default class Detail extends Component {
       </div>
     )
   }
-}
-Detail.propTypes = {
-  actions: PropTypes.object,
 }

@@ -3,31 +3,25 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types'
-import { browserHistory, Link } from 'react-router';
+import {browserHistory} from 'react-router';
 const Header = ({title, hasGoBack}) => (
-    <div className="nav-top-p">
-        {
-            hasGoBack &&
-            <div className="icon-back" onClick={() => {
-        browserHistory.goBack()
-      }}>
-                <span></span>
-                <p className="goBack">返回</p>
-            </div>
-        }
-        <div className="nav-top-title"><span className="title-mi">米饭&nbsp;-&nbsp;</span><span
-            className="opera-title">{title}</span></div>
-        <div className="icon-home"><Link to="/"><span></span></Link></div>
-    </div>
+
+  <div className="header-back">
+    {
+      hasGoBack &&
+      <i className="go-back" onClick={() => browserHistory.goBack()}/>
+    }
+    <div className="header-back__title">{title}</div>
+  </div>
 )
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
-    hasGoBack: PropTypes.bool
+  title: PropTypes.string.isRequired,
+  hasGoBack: PropTypes.bool
 }
 
 Header.defaultProps = {
-    hasGoBack: true
+  hasGoBack: true
 }
 
 export default Header;

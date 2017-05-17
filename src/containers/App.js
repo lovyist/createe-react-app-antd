@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import classNames from 'classnames'
 import * as Actions from '../actions'
-import Header from '../components/commons/header'
-import Footer from '../components/commons/footer'
+
 import Tip from '../components/commons/tip'
 const mapStateToProps = (state) => {
   return {
@@ -41,20 +40,11 @@ class App extends Component {
   }
 
   render() {
-    const {header, footer, msg, children, location,} = this.props
+    const {footer, msg, children, location,} = this.props
     return (
       <div>
         <Tip msg={msg}/>
-        {
-          header.isShow &&
-          <Header
-            title={header.title}
-            moreItem={header.moreItem}
-            isShowMore={header.isMore}
-            isShowBack={header.isShowBack}/>
-        }
         {children}
-        <Footer className={classNames({'display-none': !footer.isFootShow})} location={location}/>
       </div>
     )
   }
