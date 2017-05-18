@@ -30,6 +30,10 @@ const getWeChatConfig = (url) => {
   })
 }
 
+const getUserProfile = () =>{
+  return axios.get('/user/center/profile')
+}
+
 export default {
   login,
   register,
@@ -38,4 +42,5 @@ export default {
   logout,
   sendSmsVerifyCode,
   getWeChatConfig,
+  getUserProfile,
 }

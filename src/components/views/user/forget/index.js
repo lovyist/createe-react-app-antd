@@ -6,6 +6,7 @@ import * as Actions from '../../../../actions'
 import {backHeader} from '../../../../utils/Header'
 import ForgetForm from './ForgetForm'
 import CONFIG from '../../../../config'
+import Header from "../../../Header/index";
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
@@ -28,13 +29,6 @@ class Forget extends Component {
 
   componentDidMount() {
     const {actions} = this.props
-    let header = {
-      isShowBack: true,
-      title: '忘记密码',
-      isMore: false
-    }
-    actions.updateHeader(Object.assign({}, backHeader, header))
-    actions.updateFooter(false)
   }
 
   submitForm(values) {
@@ -52,9 +46,12 @@ class Forget extends Component {
   render() {
     const {auth} = this.props
     return (
-      <div className="reg-container">
-        <ForgetForm onSubmit={this.submitForm} sendSmsVerifyCode={this.handleSendSmsVerifyCode}
-                    verifyCodeCountDown={auth.verifyCodeCountDown}/>
+      <div className="content-wrap">
+        <Header title="重置密码"/>
+        <div className="reg-container">
+          <ForgetForm onSubmit={this.submitForm} sendSmsVerifyCode={this.handleSendSmsVerifyCode}
+                      verifyCodeCountDown={auth.verifyCodeCountDown}/>
+        </div>
       </div>
     )
   }

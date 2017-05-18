@@ -8,8 +8,6 @@ import * as Actions from '../actions'
 import Tip from '../components/commons/tip'
 const mapStateToProps = (state) => {
   return {
-    header: state.header,
-    footer: state.footer,
     msg: state.msg,
   }
 }
@@ -35,12 +33,10 @@ class App extends Component {
     const {actions} = this.props
     // 初始化用户信息
     actions.updateUser()
-    // 初始化微信配置
-    //actions.initWeChat()
   }
 
   render() {
-    const {footer, msg, children, location,} = this.props
+    const { msg, children,} = this.props
     return (
       <div>
         <Tip msg={msg}/>
@@ -51,12 +47,9 @@ class App extends Component {
 }
 
 App.propTypes = {
-  header: PropTypes.object,
-  footer: PropTypes.object,
   actions: PropTypes.object,
   // Injected by React Router
   children: PropTypes.node,
-  location: PropTypes.object
 }
 
 export default App

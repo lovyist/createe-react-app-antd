@@ -11,6 +11,9 @@ import Register from './components/views/user/register'
 import Forget from './components/views/user/forget'
 import NotFound from './components/commons/404'
 import Mine from './components/views/mine'
+import Profile from './components/views/mine/profile'
+import Collection from './components/views/mine/Collection'
+import Published from './components/views/mine/Published'
 import Settings from './components/views/mine/Settings'
 import Publish from './components/views/publish'
 import RecruitPublish from './components/views/recruit/publish'
@@ -26,9 +29,12 @@ export default (
     <IndexRoute component={Index} onEnter={userUtils.redirectToLogin}/>
     <Route path="login" component={Login} onEnter={userUtils.redirectToBack}/>
     <Route path="register" component={Register} onEnter={userUtils.redirectToBack}/>
-    <Route path="forget" component={Forget} onEnter={userUtils.redirectToBack}/>
+    <Route path="forget" component={Forget} />
     <Route path="publish" component={Publish} onEnter={userUtils.redirectToLogin}/>
     <Route path="mine" component={Mine} onEnter={userUtils.redirectToLogin}/>
+    <Route path="mine/profile" component={Profile}/>
+    <Route path="mine/collection" component={Collection}/>
+    <Route path="mine/published" component={Published}/>
     <Route path="mine/settings" component={Settings}/>
     <Route path="cat/:type" component={Cat}/>
     <Route path="cat/:type/:catId" component={CatList}/>

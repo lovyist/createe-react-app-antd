@@ -110,11 +110,14 @@ export const logout = () => {
 
 export const updateUser = () => {
   return (dispatch) => {
-    const jsonUser = localStorage.getItem(CONFIG.USER_INFO)
-    const userInfo = JSON.parse(jsonUser)
-    return dispatch({
-      type: types.UPDATE_USER_INFO,
-      userInfo: userInfo
-    });
+    userAPI.getUserProfile()
+      .then(res =>res.data)
+      .then(res =>{
+        dispatch({
+          type: types.UPDATE_USER_INFO,
+          userInfo: res.data
+        });
+      })
+
   }
 }

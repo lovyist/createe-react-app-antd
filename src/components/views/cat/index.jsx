@@ -53,13 +53,6 @@ export default class Index extends Component {
               {
                 this.state.carouselData.length > 0 && <Carousel data={this.state.carouselData}/>
               }
-              <div className="banner-slider">
-                <div className="slider-list-second">
-                  <li className="slider-list__item"><a href=""><img src="" alt=""/></a></li>
-                  <li className="slider-list__item"><a href=""><img src="" alt=""/></a></li>
-                  <li className="slider-list__item"><a href=""><img src="" alt=""/></a></li>
-                </div>
-              </div>
               <div className="entry-third">
                 <ul>
                   {

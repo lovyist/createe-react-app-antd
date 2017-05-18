@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 
 import { Link } from 'react-router'
+import Footer from "../../commons/footer";
 export default class Publish extends Component {
 
   render() {
@@ -15,6 +16,7 @@ export default class Publish extends Component {
           <div className="entry-area color-y "><Link to="/travel/publish">发布旅游度假</Link></div>
           <div className="entry-area color-b"><Link to="/edu/publish">发布教育培训</Link></div>
         </div>
+        <Footer  />
       </div>
     )
   }

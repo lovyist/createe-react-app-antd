@@ -8,9 +8,9 @@ import {bindActionCreators} from 'redux'
 import {Link} from 'react-router'
 import * as Actions from '../../../actions/index'
 import user_pic from '../../../assets/img/user-pic.png'
+import Footer from "../../commons/footer";
 const mapStateToProps = (state) => {
   return {
-    header: state.header,
     auth: state.auth,
   }
 }
@@ -23,11 +23,7 @@ const mapDispatchToProps = dispatch => (
 class Mine extends Component {
 
   componentDidMount() {
-    const {actions} = this.props
-    actions.updateHeader({
-      isShow: false,
-    })
-    actions.updateFooter()
+    //const {actions} = this.props
   }
 
   render() {
@@ -40,7 +36,7 @@ class Mine extends Component {
             <div className="pic-area-center"><img src={user_pic} alt=""/></div>
           </div>
 
-          <div className="user-name"><span className="name">mahuihui</span></div>
+          <div className="user-name"><span className="name">{auth.userInfo.username}</span></div>
         </div>
         <div className="row-line"/>
 
@@ -48,33 +44,33 @@ class Mine extends Component {
           <div className="main-content-list">
 
             <div className="content-list__item">
-              <a href="personal-profile.html">
+              <Link to="/mine/profile">
                 <div className="box-item">
                   <span className="ico-left"><i className="ico p-ico"></i></span>
                   <span className="box-item__title">个人资料</span>
                   <span className="arrow-right"><i className="ico arrow-r"></i></span>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div className="content-list__item">
-              <a href="">
+              <Link to="/mine/collection">
                 <div className="box-item">
                   <span className="ico-left"><i className="ico sc-ico"></i></span>
                   <span className="box-item__title">我的收藏</span>
                   <span className="arrow-right"><i className="ico arrow-r"></i></span>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div className="content-list__item">
-              <a href="">
+              <Link to="/mine/published">
                 <div className="box-item">
                   <span className="ico-left"><i className="ico fb-ico"></i></span>
                   <span className="box-item__title">我的发布</span>
                   <span className="arrow-right"><i className="ico arrow-r"></i></span>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div className="content-list__item">
@@ -88,16 +84,17 @@ class Mine extends Component {
             </div>
 
             <div className="content-list__item">
-              <a href="">
+              <Link to="/mine/settings">
                 <div className="box-item">
                   <span className="ico-left"><i className="ico sz-ico"></i></span>
                   <span className="box-item__title">设置</span>
                   <span className="arrow-right"><i className="ico arrow-r"></i></span>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
+        <Footer  />
       </div>
     )
   }
