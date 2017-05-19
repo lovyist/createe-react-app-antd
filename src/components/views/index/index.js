@@ -129,7 +129,7 @@ class Index extends React.Component {
                           <div className="m-content">{rec.content}</div>
                           <div className="m-info">
                             <span className="time"><i className="ico"/>{formatDate(rec.createdTime)}</span>
-                            <span className="money"><i className="ico"/>{rec.price}元</span>
+                            <span className="money"><i className="ico"/>{rec.price}</span>
                             <span className="num"><i className="ico"/>{rec.viewCnt}</span>
                           </div>
                         </div>
