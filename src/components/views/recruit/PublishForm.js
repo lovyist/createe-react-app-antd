@@ -3,13 +3,14 @@
  */
 import React, {Component} from "react";
 import {Field, reduxForm} from "redux-form";
-import {
+import WeUI from 'react-weui'
+const {
   ButtonArea,
   CellBody,
   CellHeader,
   FormCell,
   Label,
-} from "react-weui";
+} = WeUI;
 import {renderCity, renderInputField, renderTextAreaField, renderUpload} from "../../commons/render";
 @reduxForm({
   form: 'publishRecruit'

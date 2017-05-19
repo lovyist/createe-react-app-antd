@@ -2,7 +2,8 @@
  * Created by Freeman on 2017/5/16.
  */
 import React,{Component} from 'react'
-import {
+import WeUI from 'react-weui'
+const {
   CellHeader,
   CellBody,
   CellFooter,
@@ -16,7 +17,8 @@ import {
   Form,
   Gallery,
   GalleryDelete,
-} from 'react-weui'
+} = WeUI
+
 import cnCity from '../../constants/cnCity'
 export const renderInputField = ({input, label, type, placeholder, meta: {touched, error}}) => (
     <FormCell warn={touched && error}>

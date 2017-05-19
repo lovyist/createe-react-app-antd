@@ -6,7 +6,8 @@ import React, {Component} from 'react';
 import classNames from 'classnames';
 import Footer from "../../commons/footer";
 import Header from "../../Header/index";
-import {InfiniteLoader} from "react-weui";
+import WeUI from 'react-weui';
+const {InfiniteLoader} = WeUI;
 export default class Collection extends Component {
   constructor(props) {
     super(props)

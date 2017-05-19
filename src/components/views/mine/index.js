@@ -9,6 +9,7 @@ import {Link} from 'react-router'
 import * as Actions from '../../../actions/index'
 import user_pic from '../../../assets/img/user-pic.png'
 import Footer from "../../commons/footer";
+import {isLogin} from "../../../utils/userUtils";
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
@@ -23,7 +24,10 @@ const mapDispatchToProps = dispatch => (
 class Mine extends Component {
 
   componentDidMount() {
-    //const {actions} = this.props
+    const {actions} = this.props
+    if (isLogin()) {
+      actions.updateUser()
+    }
   }
 
   render() {

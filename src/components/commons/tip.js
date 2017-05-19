@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import {Toast} from 'react-weui'
+import WeUI from 'react-weui'
+const  { Toast } = WeUI;
 
 /**
  *  pop out indicator to inform users

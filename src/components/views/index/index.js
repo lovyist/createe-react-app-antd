@@ -13,7 +13,8 @@ import recruit from '../../../assets/img/01.png'
 import tour from '../../../assets/img/02.png'
 import education from '../../../assets/img/03.png'
 import { Link } from 'react-router'
-import { InfiniteLoader } from 'react-weui'
+import WeUI from 'react-weui'
+const  { InfiniteLoader } = WeUI;
 import { formatDate } from '../../../utils/dateUtils'
 import Footer from "../../commons/footer";
 import Header from "../../Header/index";
@@ -72,6 +73,7 @@ class Index extends React.Component {
 
   fetchRecList (resolve, finish) {
     const that = this
+    const {actions} = this.props
     this.setState({fetching: !this.state.fetching})
     fetch(`/home/index/getRecList?size=1&page=${this.state.page}`, {
       method: 'get',
@@ -87,6 +89,9 @@ class Index extends React.Component {
             guessLike: this.state.guessLike.concat(res.data)
           }, () => {resolve ? resolve() : () => {}})
         }
+      })
+      .catch(err =>{
+        actions.warnTip(err.message)
       })
   }
 
@@ -117,15 +122,15 @@ class Index extends React.Component {
                 {
                   this.state.guessLike.map(rec => (
                     <li className="list-item" key={rec.infoId}>
-                      <Link to={`/`}>
+                      <Link to={`/${rec.parentId==='1'?'recruit':rec.parentId==='2'?'travel':'edu'}/detail/${rec.infoId}`}>
                         <div className="pic"><img src={rec.image} alt=""/></div>
                         <div className="message">
                           <h3 className="m-title">{rec.title}</h3>
                           <div className="m-content">{rec.content}</div>
                           <div className="m-info">
                             <span className="time"><i className="ico"/>{formatDate(rec.createdTime)}</span>
-                            <span className="money"><i className="ico"/>200元</span>
-                            <span className="num"><i className="ico"/>100</span>
+                            <span className="money"><i className="ico"/>{rec.price}元</span>
+                            <span className="num"><i className="ico"/>{rec.viewCnt}</span>
                           </div>
                         </div>
                       </Link>

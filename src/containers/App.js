@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import * as Actions from '../actions'
 
 import Tip from '../components/commons/tip'
+import CONFIG from "../config";
 const mapStateToProps = (state) => {
   return {
     msg: state.msg,
@@ -32,11 +33,14 @@ class App extends Component {
   initApp() {
     const {actions} = this.props
     // 初始化用户信息
-    actions.updateUser()
+    const api_token = localStorage.getItem(CONFIG.API_TOKEN)
+    if (api_token) {
+      actions.updateUser()
+    }
   }
 
   render() {
-    const { msg, children,} = this.props
+    const {msg, children,} = this.props
     return (
       <div>
         <Tip msg={msg}/>
