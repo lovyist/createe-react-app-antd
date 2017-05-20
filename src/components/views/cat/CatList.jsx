@@ -24,7 +24,7 @@ export default class CatList extends Component {
     } else if (type === 'travel') {
       url = '/travel/index/getTravelList'
     } else if (type === 'edu') {
-      url = '/edu/index/getRecList'
+      url = '/edu/index/getEduList'
     }
     fetch(`${url}?catId=${catId}`, {
       method: 'get',

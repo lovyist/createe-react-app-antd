@@ -10,6 +10,7 @@ import * as Actions from '../../../actions'
 import initHeader from '../../../utils/Header'
 import {formatDate} from "../../../utils/dateUtils";
 import Header from "../../Header/index";
+import Collect from '../../commons/Collect'
 const mapStateToProps = (state) => {
   return {
     header: state.header
@@ -64,7 +65,7 @@ export default class Detail extends Component {
           <div className="main-box">
             <div className="xq-pic"><img src={`/${this.state.detail.image}`} alt=""/></div>
             <div className="xq-title">
-              <p>{this.state.detail.content}</p>
+              <p>{this.state.detail.title}</p>
               <div className="mes-box">
                 <span className="time"><i className="ico"></i>{formatDate(this.state.detail.createdTime)}</span>
                 <span className="money"><i className="ico"></i>{this.state.detail.price}元</span>
@@ -123,83 +124,14 @@ export default class Detail extends Component {
               </div>
             </div>
             <div className="row-line"></div>
-            <div className="comment-box">
-              <h2 className="comment-title">评论区</h2>
-              <div className="comment-box__list">
-                <div className="comment-list__item">
-                  <div className="comment-header">
-                    <div className="asset-meta">
-                      <p>
-                        <span className="byline"><span className="author">Jim</span>说：</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="comment-content">
-                    <p>很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!</p>
-                  </div>
-                  <div className="comment-footer">
-                    <p>2017-05-08 12:15:33</p>
-                  </div>
-                </div>
-                <div className="comment-list__item">
-                  <div className="comment-header">
-                    <div className="asset-meta">
-                      <p>
-                        <span className="byline"><span className="author">Jim</span>说：</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="comment-content">
-                    <p>很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!</p>
-                  </div>
-                  <div className="comment-footer">
-                    <p>2017-05-08 12:15:33</p>
-                  </div>
-                </div>
-                <div className="comment-list__item">
-                  <div className="comment-header">
-                    <div className="asset-meta">
-                      <p>
-                        <span className="byline"><span className="author">Jim</span>说：</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="comment-content">
-                    <p>很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!</p>
-                  </div>
-                  <div className="comment-footer">
-                    <p>2017-05-08 12:15:33</p>
-                  </div>
-                </div>
-                <div className="comment-list__item">
-                  <div className="comment-header">
-                    <div className="asset-meta">
-                      <p>
-                        <span className="byline"><span className="author">Jim</span>说：</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="comment-content">
-                    <p>很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!很有用!</p>
-                  </div>
-                  <div className="comment-footer">
-                    <p>2017-05-08 12:15:33</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="comment-input">
-              <h4 className="comment-input__title">评论：</h4>
-              <div className="comment-input__content"><input type="" placeholder="说点什么..."/></div>
-              <div className="comment-published__button"><button>提交</button></div>
-            </div>
           </div>
         </div>
 
         <div className="footer f-xq">
-          <a href="" className="f-xq__item"><div className="f-ico"><span>收藏</span><span className="text-hid">已收藏</span></div></a>
-          <a href="" className="f-xq__item"><div className="f-ico"><span>评论</span></div></a>
+          {
+            this.state.detail.infoId &&  <Collect infoId={this.state.detail.infoId} catId={this.state.detail.catId} isColl={this.state.detail.isColl}/>
+          }
+
         </div>
       </div>
     )
