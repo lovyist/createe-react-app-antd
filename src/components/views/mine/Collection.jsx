@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import classNames from 'classnames';
+import qs from 'qs'
 import Footer from "../../commons/footer";
 import Header from "../../Header/index";
 import WeUI from 'react-weui';
@@ -15,6 +16,7 @@ export default class Collection extends Component {
     this.handleToggle = this.handleToggle.bind(this)
     this.fetchCollectionList = this.fetchCollectionList.bind(this)
     this.fetchMoreCollectionList = this.fetchMoreCollectionList.bind(this)
+    this.handleDeleteCollection = this.handleDeleteCollection.bind(this)
     this.state = {
       type: 'recruit',
       page: 1,
@@ -80,6 +82,27 @@ export default class Collection extends Component {
       })
   }
 
+
+  handleDeleteCollection(infoId,catId){
+    fetch('/user/center/coll',{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: qs.stringify({
+        catId,
+        infoId,
+        type:0,
+      }),
+      credentials: "include"
+    }).then(res =>res.json())
+      .then(res =>{
+        if(res.errNo===0 ){
+          this.fetchCatList()
+        }
+      })
+  }
+
   render() {
     return (
       <div className="content-wrap">
@@ -104,12 +127,12 @@ export default class Collection extends Component {
                     <ul className="tab-content-list">
                       {
                         this.state.collectionData.map(coll =>
-                          <li className="tab-content__item" key={coll.id}>
-                            <a href="">
+                          <li className="tab-content__item" key={coll.infoId}>
+                            <a>
                               <span className="type-published">{coll.title}</span>
                               <span className="main-message">{coll.content}</span>
                             </a>
-                            <span className="btn-cancel"><i></i></span>
+                            <span className="btn-cancel" onClick={() =>this.handleDeleteCollection(coll.infoId,coll.catId)}><i></i></span>
                           </li>
                         )
                       }

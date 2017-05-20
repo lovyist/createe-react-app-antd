@@ -41,7 +41,7 @@ class Collect extends Component {
       <a className="f-xq__item" onClick={() =>this.handleToggleCollect(this.state.isColl==='1'?'0':'1')}>
         <div className="f-ico">
           {
-            this.state.isColl==='1' ? <span className="text-hid" >已收藏</span>: <span>收藏</span>
+            this.state.isColl==='1' ? <span>已收藏</span>: <span>收藏</span>
           }
         </div>
       </a>
